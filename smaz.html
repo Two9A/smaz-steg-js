@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+ <head>
+  <title>Smaz test</title>
+  <script type="text/javascript" src="smaz.js"></script>
+ </head>
+ <body>
+  <form id="steg">
+   <dl>
+    <dt>Cover text:</dt>
+    <dd><input type="text" id="cover_text"></dd>
+    <dd id="cover_length"></dd>
+    <dt>Input text:</dt>
+    <dd><input type="text" id="input_text"></dd>
+    <dd id="input_length"></dd>
+    <dt>Output:</dt>
+    <dd><input type="text" id="output_text"></dd>
+    <dd id="output_length"></dd>
+   </dl>
+   <input type="submit" value="DO IT">
+  </form>
+  <script type="text/javascript">
+document.getElementById('steg').onsubmit = function() {
+    var cover = document.getElementById('cover_text').value;
+    var input = document.getElementById('input_text').value;
+
+    document.getElementById('cover_length').innerText = "(len: " + cover.length + ")";
+    document.getElementById('input_length').innerText = "(len: " + input.length + ")";
+
+    var output = SMAZ.steg(input, cover);
+    document.getElementById('output_text').value = output;
+    document.getElementById('output_length').innerText = "(len: " + output.length + ")";
+
+    return false;
+};
+  </script>
+ </body>
+</html>
